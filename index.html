@@ -1,21 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login - Gerador de Fotos de Anime</title>
+    <title>Login e Cadastro - Gerador de Fotos de Anime</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <div class="container">
         <h1>Gerador de Fotos de Anime</h1>
-        <form id="loginForm">
-            <label for="username">Usuário:</label>
-            <input type="text" id="username" name="username" required><br>
+        <div id="loginForm">
+            <h2>Login</h2>
+            <label for="loginUsername">Usuário:</label>
+            <input type="text" id="loginUsername" required><br>
 
-            <label for="password">Senha:</label>
-            <input type="password" id="password" name="password" required><br>
+            <label for="loginPassword">Senha:</label>
+            <input type="password" id="loginPassword" required><br>
 
-            <button type="submit">Entrar</button>
-        </form>
+            <button id="loginButton">Entrar</button>
+        </div>
+        <div id="registerForm" style="display: none;">
+            <h2>Cadastro</h2>
+            <label for="registerUsername">Usuário:</label>
+            <input type="text" id="registerUsername" required><br>
+
+            <label for="registerPassword">Senha:</label>
+            <input type="password" id="registerPassword" required><br>
+
+            <button id="registerButton">Cadastrar</button>
+        </div>
         <div class="imageContainer" id="imageContainer" style="display: none;">
             <img id="animeImage" src="" alt="Imagem de Anime">
         </div>
