@@ -24,15 +24,15 @@ boyTab.addEventListener("click", () => {
 });
 
 generateButton.addEventListener("click", () => {
-    let tab = "waifu";
+    let category = "waifu";
 
     if (girlTab.classList.contains("active")) {
-        tab = "neko";
+        category = "neko";
     } else if (boyTab.classList.contains("active")) {
-        tab = "shin";
+        category = "shin";
     }
 
-    fetch(`https://api.waifu.pics/sfw/${tab}`)
+    fetch(`https://nekos.life/api/v2/img/${category}`)
         .then(response => response.json())
         .then(data => {
             const imageUrl = data.url;
