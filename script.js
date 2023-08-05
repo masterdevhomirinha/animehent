@@ -1,25 +1,40 @@
 const loginForm = document.getElementById("loginForm");
+const registerForm = document.getElementById("registerForm");
 const imageContainer = document.getElementById("imageContainer");
 const animeImage = document.getElementById("animeImage");
+const loginButton = document.getElementById("loginButton");
+const registerButton = document.getElementById("registerButton");
 
-loginForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+loginButton.addEventListener("click", () => {
+    const username = document.getElementById("loginUsername").value;
+    const password = document.getElementById("loginPassword").value;
 
-    const username = event.target.username.value;
-    const password = event.target.password.value;
-
-    // Aqui você pode adicionar a lógica de verificação do usuário e senha.
-    // Para fins deste exemplo, usei uma senha simples como "password".
-    if (password === "password") {
-        loginForm.style.display = "none";
-        imageContainer.style.display = "block";
-
-        fetch("https://api.waifu.pics/sfw/neko")
-            .then(response => response.json())
-            .then(data => {
-                const imageUrl = data.url;
-                animeImage.src = imageUrl;
-            })
-            .catch(error => console.error("Erro ao carregar a imagem:", error));
+    // Simulação de autenticação simples
+    if (username === "user" && password === "password") {
+        showImageContainer();
+    } else {
+        alert("Credenciais inválidas. Tente novamente.");
     }
 });
+
+registerButton.addEventListener("click", () => {
+    const username = document.getElementById("registerUsername").value;
+    const password = document.getElementById("registerPassword").value;
+
+    // Simulação de cadastro simples
+    alert(`Usuário "${username}" cadastrado com sucesso.`);
+});
+
+function showImageContainer() {
+    loginForm.style.display = "none";
+    registerForm.style.display = "none";
+    imageContainer.style.display = "block";
+
+    fetch("https://api.waifu.pics/sfw/neko")
+        .then(response => response.json())
+        .then(data => {
+            const imageUrl = data.url;
+            animeImage.src = imageUrl;
+        })
+        .catch(error => console.error("Erro ao carregar a imagem:", error));
+}
