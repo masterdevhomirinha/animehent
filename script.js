@@ -1,45 +1,25 @@
-const generateButton = document.getElementById("generateButton");
+const loginForm = document.getElementById("loginForm");
+const imageContainer = document.getElementById("imageContainer");
 const animeImage = document.getElementById("animeImage");
-const downloadLink = document.getElementById("downloadLink");
-const randomTab = document.getElementById("randomTab");
-const girlTab = document.getElementById("girlTab");
-const boyTab = document.getElementById("boyTab");
 
-randomTab.addEventListener("click", () => {
-    randomTab.classList.add("active");
-    girlTab.classList.remove("active");
-    boyTab.classList.remove("active");
-});
+loginForm.addEventListener("submit", (event) => {
+    event.preventDefault();
 
-girlTab.addEventListener("click", () => {
-    girlTab.classList.add("active");
-    randomTab.classList.remove("active");
-    boyTab.classList.remove("active");
-});
+    const username = event.target.username.value;
+    const password = event.target.password.value;
 
-boyTab.addEventListener("click", () => {
-    boyTab.classList.add("active");
-    randomTab.classList.remove("active");
-    girlTab.classList.remove("active");
-});
+    // Aqui você pode adicionar a lógica de verificação do usuário e senha.
+    // Para fins deste exemplo, usei uma senha simples como "password".
+    if (password === "password") {
+        loginForm.style.display = "none";
+        imageContainer.style.display = "block";
 
-generateButton.addEventListener("click", () => {
-    let category = "waifu";
-
-    if (girlTab.classList.contains("active")) {
-        category = "neko";
-    } else if (boyTab.classList.contains("active")) {
-        category = "shin";
+        fetch("https://api.waifu.pics/sfw/neko")
+            .then(response => response.json())
+            .then(data => {
+                const imageUrl = data.url;
+                animeImage.src = imageUrl;
+            })
+            .catch(error => console.error("Erro ao carregar a imagem:", error));
     }
-
-    fetch(`https://nekos.life/api/v2/img/${category}`)
-        .then(response => response.json())
-        .then(data => {
-            const imageUrl = data.url;
-            animeImage.src = imageUrl;
-            animeImage.style.display = "block";
-            downloadLink.href = imageUrl;
-            downloadLink.style.display = "block";
-        })
-        .catch(error => console.error("Erro ao carregar a imagem:", error));
 });
