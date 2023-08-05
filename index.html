@@ -1,34 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Modo de Manutenção</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f1f1f1;
-            text-align: center;
-            padding: 100px;
-        }
-
-        h1 {
-            font-size: 24px;
-        }
-
-        p {
-            font-size: 18px;
-            margin-top: 10px;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            margin-top: 20px;
-        }
-    </style>
+    <title>Login - Gerador de Fotos de Anime</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-    <h1>O site está em manutenção</h1>
-    <p>Nossos serviços estão temporariamente indisponíveis enquanto realizamos algumas melhorias.</p>
-    <img src="maintenance-image.jpg" alt="Imagem de Manutenção">
+    <div class="container">
+        <h1>Gerador de Fotos de Anime</h1>
+        <form id="loginForm">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" name="username" required><br>
+
+            <label for="password">Senha:</label>
+            <input type="password" id="password" name="password" required><br>
+
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="imageContainer" id="imageContainer" style="display: none;">
+            <img id="animeImage" src="" alt="Imagem de Anime">
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
