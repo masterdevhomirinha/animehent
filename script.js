@@ -24,12 +24,12 @@ boyTab.addEventListener("click", () => {
 });
 
 generateButton.addEventListener("click", () => {
-    let tab = "random";
-    
+    let tab = "waifu";
+
     if (girlTab.classList.contains("active")) {
-        tab = "girl";
+        tab = "neko";
     } else if (boyTab.classList.contains("active")) {
-        tab = "boy";
+        tab = "shin";
     }
 
     fetch(`https://api.waifu.pics/sfw/${tab}`)
