@@ -1,32 +1,20 @@
-const videoContainer = document.getElementById("video-container");
+const messageBox = document.getElementById("message-box");
+const messageInput = document.getElementById("message-input");
+const sendButton = document.getElementById("send-button");
 
-function addVideo() {
-    const videoUrl = prompt("https://www.youtube.com/watch?v=35hMrj6wRw4:");
-    if (videoUrl) {
-        const videoId = getVideoIdFromUrl(videoUrl);
-        if (videoId) {
-            const videoElement = document.createElement("div");
-            videoElement.className = "video";
-            videoElement.innerHTML = `
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
-            `;
-
-            videoContainer.appendChild(videoElement);
-        } else {
-            alert("URL inválida do YouTube.");
-        }
+sendButton.addEventListener("click", function () {
+    const message = messageInput.value;
+    if (message) {
+        const messageElement = document.createElement("div");
+        messageElement.className = "message";
+        messageElement.textContent = message;
+        messageBox.appendChild(messageElement);
+        messageInput.value = "";
     }
-}
+});
 
-function getVideoIdFromUrl(url) {
-    const match = url.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/);
-    return match ? match[1] : null;
-}
-
-window.onload = function () {
-    const addButton = document.createElement("button");
-    addButton.innerText = "Adicionar Vídeo";
-    addButton.onclick = addVideo;
-
-    videoContainer.appendChild(addButton);
-};
+messageInput.addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        sendButton.click();
+    }
+});
