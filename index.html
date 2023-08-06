@@ -1,36 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Login e Cadastro - Gerador de Fotos de Anime</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>YouTube Clone</title>
 </head>
 <body>
-    <div class="container">
-        <h1>Gerador de Fotos de Anime</h1>
-        <div id="loginForm">
-            <h2>Login</h2>
-            <label for="loginUsername">Usuário:</label>
-            <input type="text" id="loginUsername" required><br>
-
-            <label for="loginPassword">Senha:</label>
-            <input type="password" id="loginPassword" required><br>
-
-            <button id="loginButton">Entrar</button>
-        </div>
-        <div id="registerForm" style="display: none;">
-            <h2>Cadastro</h2>
-            <label for="registerUsername">Usuário:</label>
-            <input type="text" id="registerUsername" required><br>
-
-            <label for="registerPassword">Senha:</label>
-            <input type="password" id="registerPassword" required><br>
-
-            <button id="registerButton">Cadastrar</button>
-        </div>
-        <div class="imageContainer" id="imageContainer" style="display: none;">
-            <img id="animeImage" src="" alt="Imagem de Anime">
-        </div>
-    </div>
+    <header>
+        <h1>YouTube Clone</h1>
+    </header>
+    <main>
+        <div id="video-container"></div>
+    </main>
+    <footer>
+        <p>&copy; 2023 YouTube Clone</p>
+    </footer>
+    <script src="https://www.google.com/jsapi"></script>
     <script src="script.js"></script>
 </body>
 </html>
