@@ -1,35 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Meu Site</title>
+    <title>Gerador de Fotos de Anime</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Meu Site</h1>
+        <h1>Gerador de Fotos de Anime</h1>
     </header>
     <main>
-        <div id="content">
-            <div id="login-form">
-                <h2>Login</h2>
-                <input type="text" id="login-username" placeholder="Nome de Usuário">
-                <input type="password" id="login-password" placeholder="Senha">
-                <button id="login-button">Login</button>
-            </div>
-            <div id="registration-form">
-                <h2>Cadastro</h2>
-                <input type="text" id="register-username" placeholder="Nome de Usuário">
-                <input type="password" id="register-password" placeholder="Senha">
-                <button id="register-button">Cadastrar</button>
-            </div>
-            <div id="profile" style="display: none;">
-                <h2>Perfil</h2>
-                <img id="profile-image" src="" alt="Foto de Perfil">
-            </div>
+        <div id="image-container">
+            <img id="anime-image" src="" alt="Imagem de Anime">
+            <button id="generate-button">Gerar Nova</button>
+        </div>
+        <div id="user-profile" style="display: none;">
+            <h2>Perfil do Usuário</h2>
+            <p>Usuário: <span id="username"></span></p>
+            <p>Email: <span id="email"></span></p>
         </div>
     </main>
     <footer>
-        <p>&copy; 2023 Meu Site</p>
+        <p>&copy; 2023 Gerador de Fotos de Anime</p>
     </footer>
     <script src="script.js"></script>
 </body>
