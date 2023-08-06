@@ -1,23 +1,36 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chat Online</title>
+    <title>Meu Site</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Chat Online</h1>
+        <h1>Meu Site</h1>
     </header>
     <main>
-        <div id="chat-container">
-            <div id="message-box"></div>
-            <input type="text" id="message-input" placeholder="Digite sua mensagem">
-            <button id="send-button">Enviar</button>
+        <div id="content">
+            <div id="login-form">
+                <h2>Login</h2>
+                <input type="text" id="login-username" placeholder="Nome de Usuário">
+                <input type="password" id="login-password" placeholder="Senha">
+                <button id="login-button">Login</button>
+            </div>
+            <div id="registration-form">
+                <h2>Cadastro</h2>
+                <input type="text" id="register-username" placeholder="Nome de Usuário">
+                <input type="password" id="register-password" placeholder="Senha">
+                <button id="register-button">Cadastrar</button>
+            </div>
+            <div id="profile" style="display: none;">
+                <h2>Perfil</h2>
+                <img id="profile-image" src="" alt="Foto de Perfil">
+            </div>
         </div>
     </main>
     <footer>
-        <p>&copy; 2023 Chat Online</p>
+        <p>&copy; 2023 Meu Site</p>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/@openai/chatgpt@0.2.0/dist/index.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
