@@ -1,40 +1,32 @@
-const loginForm = document.getElementById("loginForm");
-const registerForm = document.getElementById("registerForm");
-const imageContainer = document.getElementById("imageContainer");
-const animeImage = document.getElementById("animeImage");
-const loginButton = document.getElementById("loginButton");
-const registerButton = document.getElementById("registerButton");
+const videoContainer = document.getElementById("video-container");
 
-loginButton.addEventListener("click", () => {
-    const username = document.getElementById("loginUsername").value;
-    const password = document.getElementById("loginPassword").value;
+function addVideo() {
+    const videoUrl = prompt("https://www.youtube.com/watch?v=35hMrj6wRw4:");
+    if (videoUrl) {
+        const videoId = getVideoIdFromUrl(videoUrl);
+        if (videoId) {
+            const videoElement = document.createElement("div");
+            videoElement.className = "video";
+            videoElement.innerHTML = `
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>
+            `;
 
-    // Simulação de autenticação simples
-    if (username === "user" && password === "password") {
-        showImageContainer();
-    } else {
-        alert("Credenciais inválidas. Tente novamente.");
+            videoContainer.appendChild(videoElement);
+        } else {
+            alert("URL inválida do YouTube.");
+        }
     }
-});
-
-registerButton.addEventListener("click", () => {
-    const username = document.getElementById("registerUsername").value;
-    const password = document.getElementById("registerPassword").value;
-
-    // Simulação de cadastro simples
-    alert(`Usuário "${username}" cadastrado com sucesso.`);
-});
-
-function showImageContainer() {
-    loginForm.style.display = "none";
-    registerForm.style.display = "none";
-    imageContainer.style.display = "block";
-
-    fetch("https://api.waifu.pics/sfw/neko")
-        .then(response => response.json())
-        .then(data => {
-            const imageUrl = data.url;
-            animeImage.src = imageUrl;
-        })
-        .catch(error => console.error("Erro ao carregar a imagem:", error));
 }
+
+function getVideoIdFromUrl(url) {
+    const match = url.match(/(?:https?:\/\/)?(?:www\.)?youtube\.com\/watch\?v=([^&]+)/);
+    return match ? match[1] : null;
+}
+
+window.onload = function () {
+    const addButton = document.createElement("button");
+    addButton.innerText = "Adicionar Vídeo";
+    addButton.onclick = addVideo;
+
+    videoContainer.appendChild(addButton);
+};
