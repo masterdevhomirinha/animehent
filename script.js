@@ -1,19 +1,37 @@
-const content = document.getElementById("content");
-const loginForm = document.getElementById("login-form");
-const registrationForm = document.getElementById("registration-form");
-const profile = document.getElementById("profile");
-const profileImage = document.getElementById("profile-image");
+const animeImage = document.getElementById("anime-image");
+const generateButton = document.getElementById("generate-button");
+const userProfile = document.getElementById("user-profile");
+const usernameSpan = document.getElementById("username");
+const emailSpan = document.getElementById("email");
 
-let loggedInUser = null;
+let currentUser = null;
+
+// Simulação de dados de usuários (substitua por um backend real)
+const users = [
+    { username: "user1", email: "user1@example.com", password: "password1" },
+    { username: "user2", email: "user2@example.com", password: "password2" }
+];
+
+generateButton.addEventListener("click", generateImage);
+
+function generateImage() {
+    // ... Código de geração de imagem (veja o exemplo anterior) ...
+}
+
+function showProfile(user) {
+    currentUser = user;
+    usernameSpan.textContent = user.username;
+    emailSpan.textContent = user.email;
+    userProfile.style.display = "block";
+}
 
 document.getElementById("login-button").addEventListener("click", function () {
     const username = document.getElementById("login-username").value;
     const password = document.getElementById("login-password").value;
-    
-    // Simulação de login (substitua por autenticação real)
-    if (username === "user" && password === "password") {
-        loggedInUser = username;
-        showProfile();
+
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+        showProfile(user);
     } else {
         alert("Login inválido. Tente novamente.");
     }
@@ -21,19 +39,12 @@ document.getElementById("login-button").addEventListener("click", function () {
 
 document.getElementById("register-button").addEventListener("click", function () {
     const username = document.getElementById("register-username").value;
+    const email = document.getElementById("register-email").value;
     const password = document.getElementById("register-password").value;
-    
-    // Simulação de cadastro (substitua por armazenamento real)
+
+    const newUser = { username, email, password };
+    users.push(newUser);
+
     alert(`Usuário "${username}" cadastrado com sucesso!`);
+    showProfile(newUser);
 });
-
-function showProfile() {
-    loginForm.style.display = "none";
-    registrationForm.style.display = "none";
-    profile.style.display = "block";
-
-    // Simulação de geração de foto de anime (substitua por lógica real)
-    const randomImageNumber = Math.floor(Math.random() * 10) + 1;
-    const imageUrl = `https://www.example.com/anime${randomImageNumber}.jpg`;
-    profileImage.src = imageUrl;
-}
